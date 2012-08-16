@@ -1,5 +1,9 @@
 <?php
 
+/**
+ *
+ */
+
 class TournamentCode
 {
 	const SUMMONERS_RIFT = 1;
