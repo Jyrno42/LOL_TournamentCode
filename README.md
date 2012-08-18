@@ -30,3 +30,11 @@ $game = $result->GetGameInfo();
 
 var_dump($game);
 ```
+
+NOTE: This doesen't store the result sent anywhere, if you want to debug the data sent
+you need to add some storing code at the end.
+
+Storing the data in a text file
+```php
+file_put_contents("database.txt", var_export($game, true), FILE_APPEND);
+```
