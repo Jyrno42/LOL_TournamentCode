@@ -9,7 +9,7 @@ class TournamentCode
 	const SUMMONERS_RIFT = 1;
 	const TWISTED_TREELINE = 4;
 	const PROVING_GROUNDS = 7;
-	//	const CRYSTAL_SCAR = 3;
+	const CRYSTAL_SCAR = 8; // Latest lol patch got me the info by logging everything :)
 	
 	const BLIND_PICK = 1;
 	const DRAFT_MODE = 2;
@@ -19,7 +19,7 @@ class TournamentCode
 	const SPEC_NONE = "NONE";
 	const SPEC_ALL = "ALL";
 	const SPEC_LOBBYONLY = "LOBBYONLY";
-	const SPEC_FRIENDS = "FRIENDLISTONLY"; // TODO: Find out this parameters real value.
+	const SPEC_FRIENDS = "DROPINONLY"; // TODO: Find out this parameters real value.
 
 	public $mapId = self::SUMMONERS_RIFT;
 	public $pickId = self::BLIND_PICK;
@@ -175,5 +175,8 @@ class TournamentResult
 		print "</div>";
 	}
 }
+
+//$c = new TournamentCode;
+//print $c->Generate(TournamentCode::CRYSTAL_SCAR, TournamentCode::BLIND_PICK, 1, TournamentCode::SPEC_FRIENDS);
 
 ?>
