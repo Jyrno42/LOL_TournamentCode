@@ -107,8 +107,7 @@ class GameConfig
 			"name" => $name,
 			"extra" => json_encode(array("game" => $innerGameID)),
 			"password" => $password,
-			"report" => $reporturl//,
-			//"team" => 2
+			"report" => $reporturl
 		
 		);
 		return base64_encode(json_encode($arr));
