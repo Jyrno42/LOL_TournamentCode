@@ -115,16 +115,6 @@ class GameConfig
 	}
 }
 
-class LolHelper
-{
-
-	public static function MapChampion($n)
-	{
-		$n = strtolower($n);
-		return "http://edge2.mobafire.com/images/champion/icon/$n.png";
-	}
-}
-
 class TournamentResult
 {
 	private $innerClass = null;
@@ -132,6 +122,10 @@ class TournamentResult
 	public function TournamentResult($str)
 	{
 		$this->innerClass = json_decode($str);
+		if($this->innerClass === NULL || !isset($this->innerClass->tournamentMetaData))
+		{
+			throw new Exception("Invalid data provided!");
+		}
 	}
 	
 	public function GetGameInfo()
@@ -162,21 +156,18 @@ class TournamentResult
 	public function PrintSummoner($team, $id)
 	{
 		$tObj = $team == 0 ? $this->innerClass->teamPlayerParticipantsSummaries : $this->innerClass->otherTeamPlayerParticipantsSummaries;
-		$cId = LolHelper::MapChampion($tObj[$id]->skinName);
+		$cId = $tObj[$id]->skinName;
 		$spell0 = $tObj[$id]->spell1Id;
 		$spell1 = $tObj[$id]->spell2Id;
 		
 		$col = $tObj[$id]->isWinningTeam ? "#00FF00" : "#FF0000";
 	
 		print "<div style='background: $col; width: 248px; margin-left: 10px; float: left;'>";
-		print "<img src='$cId' />";
-		print "<img src='spells/$spell0.png' />";
-		print "<img src='spells/$spell1.png' />";
+		print "Champion: $cId";
+		print "Spell 1: $spell0";
+		print "Spell 2: $spell1";
 		print "</div>";
 	}
 }
-
-//$c = new TournamentCode;
-//print $c->Generate(TournamentCode::CRYSTAL_SCAR, TournamentCode::BLIND_PICK, 1, TournamentCode::SPEC_FRIENDS);
 
 ?>
